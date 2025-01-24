@@ -507,7 +507,11 @@ foreach ($pconfig['routes'] as $route) {
 		$address = '';
 		$mask = '';
 	}
-	$priority = $route['priority'];
+	if (isset($route['priority'])) {
+		$priority = $route['priority'];
+	} else {
+		$priority = '';
+	}
 	
 	$group = new Form_Group($route_counter == 0 ? 'Routes':'');
 	$group->add(new Form_IpAddress(
