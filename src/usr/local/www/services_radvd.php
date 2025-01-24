@@ -494,7 +494,7 @@ if (empty($pconfig['routes'])) {
 }
 
 $route_counter = 0;
-$last = count($pconfig['routes']) - 1;
+$last_route = count($pconfig['routes']) - 1;
 $route_priority_modes = $priority_modes;
 array_unshift($route_priority_modes, '');
 foreach ($pconfig['routes'] as $route) {
@@ -503,19 +503,19 @@ foreach ($pconfig['routes'] as $route) {
 	$route_priority_name = 'route_priority' . $route_counter;
 	if (isset($route['destination'])) {
 		[$address, $mask] = explode('/', $route['destination']);
-		$priority = $route['priority'];
 	} else {
 		$address = '';
 		$mask = '';
-		$priority = '';
 	}
+	$priority = $route['priority'];
 	
 	$group = new Form_Group($route_counter == 0 ? 'Routes':'');
 	$group->add(new Form_IpAddress(
 		$route_address_name,
 		null,
 		$address
-	))->addMask($route_bits_name, $mask, 128, 0);
+	))->addMask($route_bits_name, $mask, 128, 0)
+	->setHelp(($route_counter === $last_route) ? gettext($routes_help) : '');
 	$group->add(new Form_Select(
 	$route_priority_name,
 	null,
