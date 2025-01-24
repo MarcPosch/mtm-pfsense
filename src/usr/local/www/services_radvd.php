@@ -499,10 +499,10 @@ $numrows = count($pconfig['routes']) - 1;
 $route_priority_modes = $priority_modes;
 array_unshift($route_priority_modes, '');
 foreach ($pconfig['routes'] as $route) {
-	$route_address_name = "route_address" . $route_counter;
-	$route_bits_name = "route_bits" . $route_counter;
-	$route_priority_name = "route_priority" . $route_counter;
-	list($address, $mask) = explode("/", $route['destination']);
+	$route_address_name = 'route_address' . $route_counter;
+	$route_bits_name = 'route_bits' . $route_counter;
+	$route_priority_name = 'route_priority' . $route_counter;
+	[$address, $mask] = explode('/', $route['destination']);
 	$priority = $route['priority'];
 	$group = new Form_Group($route_counter == 0 ? 'Routes':'');
 	$group->add(new Form_IpAddress(
