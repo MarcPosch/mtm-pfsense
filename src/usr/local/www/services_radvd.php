@@ -502,8 +502,15 @@ foreach ($pconfig['routes'] as $route) {
 	$route_address_name = 'route_address' . $route_counter;
 	$route_bits_name = 'route_bits' . $route_counter;
 	$route_priority_name = 'route_priority' . $route_counter;
-	[$address, $mask] = explode('/',(string) $route['destination']);
-	$priority = $route['priority'];
+	if (isset($route['destination'])) {
+		[$address, $mask] = explode('/', $route['destination']);
+		$priority = $route['priority'];
+	} else {
+		$address = '';
+		$mask = '';
+		$priority = '';
+	}
+	
 	$group = new Form_Group($route_counter == 0 ? 'Routes':'');
 	$group->add(new Form_IpAddress(
 		$route_address_name,
