@@ -101,11 +101,12 @@ $priority_modes = array(
 	"high" => 	gettext("High"));
 
 
-$routes_help = '<span class="help-block">' .
-	gettext("Routes are specified in CIDR format. " .
-			"Enter subnets to which routes should be advertised, and their priority. " .
-			"If you need a default route, specify it with ::/0 here.  " .
-			"If no routes are specified here, the Router Advertisement (RA) Daemon will advertise only the default route.");
+$routes_help = 'Routes are specified in CIDR format.' .
+			'<div class="infoblock">' .
+			'Enter subnets to which routes should be advertised, and their priority. ' .
+			'If you need a default route, specify it with ::/0 here.  ' .
+			'If no routes are specified here, the Router Advertisement (RA) Daemon will advertise only the default route.' .
+			'.</div>';
 
 // THe use of <div class="infoblock"> here causes the text to be hidden until the user clicks the "info" icon
 $ramode_help = gettext('Select the Operating Mode for the Router Advertisement (RA) Daemon.') .
