@@ -479,6 +479,11 @@ $input = new Form_Button(
 	'fa-plus'
 );
 $input->addClass('btn-success');
+$group->add($input);
+
+$section->add($group);
+
+$form->add($section);
 /*-----------------------------------------------------------------------------*/
 $section->addInput(new Form_StaticText(
 	'Routes',
@@ -533,12 +538,8 @@ $input->addClass('btn-success');
 $group->add($input);
 
 $section->add($group);
-/*-----------------------------------------------------------------------------*/
-$group->add($input);
-
-$section->add($group);
-
 $form->add($section);
+/*-----------------------------------------------------------------------------*/
 
 $section = new Form_Section(gettext('DNS Configuration'));
 
