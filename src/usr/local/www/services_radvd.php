@@ -541,7 +541,7 @@ foreach ($pconfig['routes'] as $route) {
 $group = new Form_Group(null);
 $input = new Form_Button(
 	'addrow_routes',
-	'Add',
+	'Add Route',
 	null,
 	'fa-plus'
 );
